@@ -1,12 +1,16 @@
 # NimTTY
 ## Interface de console para a linguagem Nim no Linux.
 
->*Obs.:* Para se obter os mesmos resultados do ambiente Linux no ambiente Windows instalar o emulador de console chamado `cmder` que poder ser baixado no endereço `https://cmder.app/` e executar as aplicações criadas neste console.
+>*Obs.:* Para obter os mesmos resultados deste módulo no Windows, utilize o emulador de console `cmder`, disponível em `https://cmder.app/`. As aplicações Nim baseadas neste módulo devem ser executadas dentro do `cmder`.
 
-## O compilador e as ferramentas do Nim
+## Gerenciando suas ferramentas Nim com Choosenim
 
-Para facilitar a instalação do compilador e as ferramentas do Nim recomenda-se a ferramenta chamada `Choosenim` que pode ser encontrada no endereço: `https://github.com/dom96/choosenim`.
+Compilar projetos Nim se torna muito mais fácil com as ferramentas certas! Para isso, recomendamos o **Choosenim**, similar a gerenciadores como `Rustup` e `Pyenv`. Com ele, você instala e gerencia múltiplas versões do compilador e ferramentas do Nim de maneira prática.
 
-Semelhante a `Rustup` e `Pyenv`, `Choosenim` é um multiplexador de conjunto de ferramentas. Ele instala e gerencia vários conjuntos de ferramentas do Nim.
+**Para começar:**
 
-Siga as etapas para baixar, descompactar, executar e adicionar o compilador Nim à sua variável de ambiente no Path.
+- Faça o download do **Choosenim** em: https://github.com/dom96/choosenim.
+- Siga as instruções para descompactar, executar e configurar o Choosenim em seu sistema.
+- Uma vez configurado, adicione o compilador Nim à sua variável de ambiente `PATH`.
+
+Pronto! Agora você pode gerenciar diferentes versões do Nim e suas ferramentas com facilidade.
