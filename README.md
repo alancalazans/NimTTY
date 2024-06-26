@@ -1,5 +1,5 @@
 # NimTTY
-## Interface de terminal para a linguagem Nim no Linux.
+## Interface de console para a linguagem Nim no Linux.
 
 >*Obs.:* Para se obter os mesmos resultados do ambiente Linux no ambiente Windows instalar o emulador de console chamado `cmder` que poder ser baixado no endereço `https://cmder.app/` e executar as aplicações criadas neste console.
 
