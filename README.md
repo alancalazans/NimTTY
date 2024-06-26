@@ -1,7 +1,7 @@
 # NimTTY
 ## Interface de console para a linguagem Nim no Linux.
 
->*Obs.:* Para obter os mesmos resultados deste módulo no Windows, utilize o emulador de console `cmder`, disponível em `https://cmder.app/`. As aplicações Nim baseadas neste módulo devem ser executadas dentro do `cmder`.
+>***Obs.:*** Para obter os mesmos resultados deste módulo no Windows, utilize o emulador de console `cmder`, disponível em `https://cmder.app/`. As aplicações Nim baseadas neste módulo devem ser executadas dentro do `cmder`.
 
 ## Gerenciando suas ferramentas Nim com Choosenim
 
