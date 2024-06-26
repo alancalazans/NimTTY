@@ -1,2 +1,2 @@
 # NimTTY
-Interface de console construído na linguagem Nim
+Interface de console para a linguagem Nim.
