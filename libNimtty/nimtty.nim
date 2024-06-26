@@ -45,12 +45,16 @@ proc textBackground*(color: string) =
 # ---
 # Funções de saída
 # ---
-proc print*(text: string) =
-  stdout.write(text)
+proc print*(str: string) =
+  try:
+    if str != "":
+      stdout.write(str)
+  except ValueError:
+    echo "It's not a string"
 
-proc printAt*(row, col: int, text: string) =
+proc printAt*(row, col: int, str: string) =
   posRowCol(row, col)
-  stdout.write(text)
+  print(str)
 
 # ---
 # Funções de entrada
@@ -58,10 +62,9 @@ proc printAt*(row, col: int, text: string) =
 proc input*(): string =
   stdin.readLine()
 
-proc inputAt*(row, col: int, question: string): string =
-  posRowCol(row, col)
-  stdout.write(question)
-  stdin.readline()
+proc inputAt*(row, col: int, str: string): string =
+  printAt(row, col, str)
+  input()
 
 # ---
 # Função para criar um frame
