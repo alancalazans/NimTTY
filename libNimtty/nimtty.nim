@@ -4,32 +4,35 @@ include codesOfEscape
 # Função para limpar o terminal
 # ---
 proc clrscr*() =
-  stdout.write(CLEAR)
+  stdout.write(cls)
 
 # ---
 # Funções para movimentar o cursor
 # ---
 proc clrscrPosRowCol*(row, col: int) = # Clear and Goto line, col
-  stdout.write(CLEAR)
+  stdout.write(cls)
   stdout.write("\x1b[" & $row & ";" & $col & "f")
 
 proc posCol*(col: int) =
-  stdout.write("\x1b[" & $col & "G")
+  stdout.write("\e[" & $col & "G")
 
 proc posRowCol*(row, col: int) =
-  stdout.write("\x1b[" & $row & ";" & $col & "f")
+  stdout.write("\e[" & $row & ";" & $col & "f")
 
 # ---
-# Funções para referente ao cursor
+# Funções referente ao cursor
 # ---
 proc noCursor*() =
-  stdout.write("\x1b[?25l")
-
-proc reset*() =
-  stdout.write(CC_CLEAR)
+  stdout.write(noCur)
 
 proc showCursor*() =
-  stdout.write("\x1b[?25h")
+  stdout.write(showCur)
+
+# ---
+# Limpa estilos ativados
+# ---
+proc reset*() =
+  stdout.write(rst)
 
 # ---
 # Funções para cor de texto e de fundo
