@@ -10,15 +10,15 @@ proc clrscr*() =
 # ---
 # Funções para movimentar o cursor
 # ---
-proc clrscrPosRowCol*(row, col: int) = # Clear and Goto line, col
-  stdout.write(cls)
-  stdout.write("\e[" & $row & ";" & $col & "f")
-
 proc posCol*(col: int) =
-  stdout.write("\e[" & $col & "G")
+  stdout.write("\x1B[" & $col & "G")
 
 proc posRowCol*(row, col: int) =
-  stdout.write("\e[" & $row & ";" & $col & "f")
+  stdout.write("\x1B[" & $row & ";" & $col & "f")
+
+proc clrscrPosRowCol*(row, col: int) = # Limpar e ir para a linha, coluna
+  stdout.write(cls)
+  posRowCol(row, col)
 
 # ---
 # Funções referente ao cursor
@@ -50,11 +50,12 @@ proc textBackground*(color: string) =
 # Funções de saída
 # ---
 proc print*(str: string) =
-  try:
-    if str != "":
+  if str.len > 0:
+    try:
       stdout.write(str)
-  except ValueError:
-    echo "It's not a string"
+      stdout.flushFile() # Para garantir que a saída seja exibida imediatamente.
+    except IOError: # A exceção IOError é mais apropriada para operações de E/S.
+      echo "Erro ao escrever no stdout"
 
 proc printAt*(row, col: int, str: string) =
   posRowCol(row, col)
@@ -64,11 +65,31 @@ proc printAt*(row, col: int, str: string) =
 # Funções de entrada
 # ---
 proc input*(): string =
-  stdin.readLine()
+  try:
+    # Usei result = em vez de return para seguir o estilo idiomático do Nim.
+    result = stdin.readLine()
+  except IOError:
+    echo "Erro de leitura do stdin"
+    result = ""
 
-proc inputAt*(row, col: int, str: string): string =
-  printAt(row, col, str)
-  input()
+proc input*(prompt: string): string =
+  if prompt.len > 0:
+    try:
+      stdout.write(prompt)
+      stdout.flushFile()
+    except IOError:
+      echo "Erro ao escrever o prompt para stdout"
+  
+  try:
+    # Usei result = em vez de return para seguir o estilo idiomático do Nim.
+    result = stdin.readLine()
+  except IOError:
+    echo "Erro de leitura do stdin"
+    result = ""
+
+proc inputAt*(row, col: int, prompt: string): string =
+  posRowCol(row, col)
+  result = input(prompt)
 
 # ---
 # Função para criar um frame
