@@ -1,3 +1,4 @@
+# codesOfEscape.nim
 const
   #-----------------------
   #--- Utilidade Geral ---

@@ -1,3 +1,4 @@
+# nimtty.nim
 include codesOfEscape
 
 # ---
@@ -11,7 +12,7 @@ proc clrscr*() =
 # ---
 proc clrscrPosRowCol*(row, col: int) = # Clear and Goto line, col
   stdout.write(cls)
-  stdout.write("\x1b[" & $row & ";" & $col & "f")
+  stdout.write("\e[" & $row & ";" & $col & "f")
 
 proc posCol*(col: int) =
   stdout.write("\e[" & $col & "G")
@@ -42,7 +43,7 @@ proc textColor*(color: string) =
 
 proc textBackground*(color: string) =
   var cor: string = color
-  cor[2]='4' # The given color will be fg color. Replace '3' with '4'.
+  cor[2] = '4' # A cor fornecida será a cor do primeiro plano. Substitua '3' por '4'.
   stdout.write(cor)
 
 # ---
